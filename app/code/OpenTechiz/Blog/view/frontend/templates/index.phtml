@@ -1,0 +1,48 @@
+<?php
+/**
+ * @var \OpenTechiz\Blog\Block\Post\Index $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+?>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;}
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+</style>
+<div class="post-list">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Content</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <?php
+        foreach ($block->getPostData() as $post){
+            if ($post['status'] == 1) {
+                echo '<tr>
+                    <td>' . $post['name'] . '</td>
+                    <td>' . $post['short_description'] . '</td>
+                    <td>' . $post['post_content'] . '</td>
+                    <td>' . $post['status'] . '</td>
+                    <td><a href="' . $block->getBaseUrl() . $post['url_rewrite'] . '.html">View</a></td>' .
+                    '</tr>';
+            }
+        }
+        ?>
+    </table>
+</div>

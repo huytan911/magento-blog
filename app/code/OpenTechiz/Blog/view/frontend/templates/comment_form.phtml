@@ -1,0 +1,38 @@
+<?php
+/**
+ * @var $block OpenTechiz\Blog\Block\CommentForm
+ */
+?>
+
+<div id="comment-container">
+    <div id="comment-response"></div>
+    <?php if ($block->isLoggedIn()): ?>
+        <form id="blog-comment-form">
+            <input id="entity_id" name="entity_id" type="hidden" value="<?=$block->escapeHtmlAttr($block->getCurrentCustomerId())?>"/>
+            <input id="post_id" name="post_id" type="hidden" value="<?=$block->escapeHtmlAttr($block->getPostId())?>"/>
+            <div class="content">
+                <label for="content" class="label"><span><?= __('Comment') ?></span></label>
+                <div class="control">
+                    <textarea name="content" id="content" rows="5" class="textarea" required></textarea>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary"><span><?= __('Submit Comment') ?></span></button>
+                </div>
+            </div>
+        </form>
+    <?php else: ?>
+        <div class="message info">
+            <?= __('You must be logged in to post a comment. ') ?>
+            <a href="<?= $block->getLoginUrl() ?>"><?= __('Click here to login.') ?></a>
+        </div>
+    <?php endif; ?>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#comment-container": {
+            "submitComment": {}
+        }
+    }
+</script>

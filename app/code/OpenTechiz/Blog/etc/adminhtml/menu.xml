@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="OpenTechiz_Blog::blog" title="Blog" module="OpenTechiz_Blog" sortOrder="110" resource="OpenTechiz_Blog::blog" parent="Magento_Backend::content"/>
+        <add id="OpenTechiz_Blog::post" title="Manage Posts" module="OpenTechiz_Blog" sortOrder="10" action="blog/post" resource="OpenTechiz_Blog::post" parent="OpenTechiz_Blog::blog"/>
+        <add id="OpenTechiz_Blog::comment" title="Manage Comments" module="OpenTechiz_Blog" sortOrder="10" action="blog/comment" resource="OpenTechiz_Blog::comment" parent="OpenTechiz_Blog::blog"/>
+    </menu>
+</config>

@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var $block OpenTechiz\Blog\Block\Comments
+ */
+?>
+
+<?php $comments = $block->getComments(); ?>
+
+<h2><?= __('Comments') ?></h2>
+<?php if ($comments->getSize() > 0): ?>
+    <div class="blog-comments">
+        <ul class="comment-list">
+            <?php foreach ($comments as $comment): ?>
+                <li class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-date"><?= $block->escapeHtml($comment->getCreatedAt()) ?></span>
+                    </div>
+                    <div class="comment-body">
+                        <?= $block->escapeHtml($comment->getContent()) ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <p class="no-comments"><?= __('No comments yet. Be the first to comment!') ?></p>
+<?php endif; ?>
