@@ -8,7 +8,7 @@ $blog = $block->getPost();
 ?>
 
 <h1><?=$escaper->escapeHtml($blog->getName())?></h1>
-<p><?=$escaper->escapeHtml($blog->getDescription())?></p>
+<p><?=$escaper->escapeHtml($blog->getShortDescription())?></p>
 <p><?=$escaper->escapeHtml($blog->getPostContent())?></p>
 <p><?=$escaper->escapeHtml($blog->getUrlRewrite())?></p>
 <p><?=$escaper->escapeHtml($blog->getStatus())?></p>

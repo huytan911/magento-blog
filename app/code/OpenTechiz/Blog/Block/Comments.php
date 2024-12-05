@@ -5,13 +5,15 @@ namespace OpenTechiz\Blog\Block;
 use Magento\Framework\View\Element\Template;
 use OpenTechiz\Blog\Model\ResourceModel\Comment\Collection;
 use OpenTechiz\Blog\Model\ResourceModel\Comment\CollectionFactory;
+use Magento\Framework\DataObject\IdentityInterface;
 
-class Comments extends Template
+class Comments extends Template implements IdentityInterface
 {
     /**
      * @var CollectionFactory
      */
     protected $commentCollectionFactory;
+
 
     /**
      * @param Template\Context $context
@@ -48,4 +50,15 @@ class Comments extends Template
     {
         return $this->getRequest()->getParam('id');
     }
+
+    public function getIdentities()
+    {
+        $identities = [];
+        foreach ($this->getComments() as $comment) {
+            $identities[] = $comment->getIdentities();
+        }
+        return array_merge([], ...$identities);
+    }
+
+
 }

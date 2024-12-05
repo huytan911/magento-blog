@@ -24,14 +24,4 @@ class Comment extends \Magento\Framework\Model\AbstractModel implements \Magento
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
-
-    /**
-     * @return array
-     */
-    public function getDefaultValues()
-    {
-        $values = [];
-
-        return $values;
-    }
 }
